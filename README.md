@@ -78,7 +78,7 @@ cd Super-Orchestrator
 | **⚡ Discipline Agents** | Sisyphus won't stop until the task is done - aggressive task completion |
 | **🔒 Hash-Anchored Edits** | 6.7% → 68.3% success rate improvement with hash-anchored editing |
 | **🌐 Multi-Platform** | Works with OpenCode, Claude Code, Codex, Cursor, Trae |
-| **🤖 30+ Specialized Agents** | Domain experts for every task - planning, security, testing, review |
+| **🤖 40+ Specialized Agents** | Domain experts for every task - planning, security, testing, development, mobile |
 | **🧪 80%+ Test Coverage** | TDD is mandatory - write tests first, then code |
 | **🔐 Security First** | Every commit is audited - no hardcoded secrets |
 | **📚 135+ Skills** | Comprehensive skills for every development workflow |
@@ -115,7 +115,7 @@ cd Super-Orchestrator
 | **Deep Worker** | Autonomous end-to-end execution without hand-holding | `@deep-worker` |
 | **Strategic Planner** | Interview-mode planning before any code is written | `@strategic-planner` |
 
-### Specialized Agents (from everything-claude-code - 117K stars)
+### Specialized Agents (from everything-claude-code - 117K stars + AITMPL.com)
 
 | Agent | Purpose | Command |
 |-------|---------|---------|
@@ -134,6 +134,23 @@ cd Super-Orchestrator
 | Harness Optimizer | Config tuning | `@harness-optimizer` |
 | Database Reviewer | PostgreSQL/Supabase | `@database-reviewer` |
 
+### Development Agents (from AITMPL.com)
+
+| Agent | Purpose | Command |
+|-------|---------|---------|
+| Fullstack Developer | Complete stack development | `@fullstack-developer` |
+| Frontend Developer | UI/UX implementation | `@frontend-developer` |
+| Backend Architect | System architecture | `@backend-architect` |
+| Database Architect | Database design | `@database-architect` |
+| Debugger | Bug fixing & analysis | `@debugger` |
+| AI Engineer | ML/AI integration | `@ai-engineer` |
+| DevOps Engineer | CI/CD & infrastructure | `@devops-engineer` |
+| Documentation Expert | Technical writing | `@documentation-expert` |
+| Deployment Engineer | App deployment | `@deployment-engineer` |
+| MCP Expert | MCP server integration | `@mcp-expert` |
+| Security Engineer | Security auditing | `@security-engineer` |
+| UI/UX Designer | Design implementation | `@ui-ux-designer` |
+
 ### Language-Specific Agents (10 languages)
 
 | Language | Reviewer Agent | Build Resolver |
@@ -147,6 +164,9 @@ cd Super-Orchestrator
 | C++ | `@cpp-reviewer` | `@cpp-build-resolver` |
 | Swift | `@swift-reviewer` | - |
 | PHP | `@php-reviewer` | - |
+| iOS | `@ios-developer` | - |
+| Android | `@android-developer` | - |
+| Mobile | `@mobile-app-developer` | - |
 
 ### Commands (Slash Commands)
 
