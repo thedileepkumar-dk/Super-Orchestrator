@@ -180,8 +180,59 @@ cd Super-Orchestrator
 | `/refactor-clean` | Clean dead code |
 | `/learn` | Extract patterns from session |
 | `/verify` | Run verification loop |
+| `/multi-plan` | Multi-agent task decomposition |
+| `/multi-execute` | Orchestrated multi-agent workflows |
+| `/multi-frontend` | Frontend-specific multi-agent |
+| `/multi-backend` | Backend-specific multi-agent |
+| `/multi-workflow` | Complex workflow orchestration |
+| `/checkpoint` | Save checkpoint |
+| `/resume-session` | Resume session |
+| `/save-session` | Save session |
+| `/aside` | Create aside task |
+| `/loop-start` | Start autonomous loop |
+| `/loop-status` | Check loop status |
+| `/model-route` | Route to specific model |
+| `/prompt-optimize` | Optimize prompt |
+| `/quality-gate` | Quality gate check |
+| `/rules-distill` | Extract rules |
+| `/evolve` | Evolve patterns |
+| `/promote` | Promote patterns |
+| `/prune` | Prune patterns |
+| `/instinct-status` | Show instincts |
+| `/instinct-import` | Import instincts |
+| `/instinct-export` | Export instincts |
+| `/learn-eval` | Evaluate and save patterns |
+| `/eval` | Evaluation harness |
+| `/orchestrate` | Orchestrate agents |
+| `/devfleet` | DevFleet integration |
+| `/docs` | Generate documentation |
+| `/pm2` | PM2 process management |
+| `/projects` | Project management |
+| `/harness-audit` | Audit harness |
+| `/claw` | CLAW tool |
+| `/context-budget` | Manage context budget |
 
-### Skills
+### Language-Specific Commands
+
+| Command | Description |
+|---------|-------------|
+| `/go-build` | Fix Go build errors |
+| `/go-test` | Run Go tests |
+| `/go-review` | Review Go code |
+| `/rust-build` | Fix Rust build errors |
+| `/rust-test` | Run Rust tests |
+| `/rust-review` | Review Rust code |
+| `/python-review` | Review Python code |
+| `/cpp-build` | Fix C++ build errors |
+| `/cpp-test` | Run C++ tests |
+| `/cpp-review` | Review C++ code |
+| `/kotlin-build` | Fix Kotlin build errors |
+| `/kotlin-test` | Run Kotlin tests |
+| `/kotlin-review` | Review Kotlin code |
+| `/java-build` | Fix Java/Gradle build errors |
+| `/gradle-build` | Gradle build |
+
+### Skills (135+ Available)
 
 | Skill | Description |
 |-------|-------------|
@@ -192,6 +243,36 @@ cd Super-Orchestrator
 | Security Review | OWASP, vulnerability detection |
 | Deployment Patterns | CI/CD, Docker, Kubernetes |
 | Continuous Learning | Extract and evolve patterns |
+| Agent Eval | Agent evaluation framework |
+| Agent Harness Construction | Build agent harnesses |
+| AI First Engineering | AI-driven development |
+| API Design | REST/GraphQL API patterns |
+| Architecture Decision Records | ADR documentation |
+| Benchmarking | Performance benchmarking |
+| Blueprint | Project blueprints |
+| Browser QA | Browser testing |
+| Click Path Audit | UX analysis |
+| Codebase Onboarding | New developer onboarding |
+| Content Hash Cache | Caching patterns |
+| Context Budget | Context management |
+| Database Migrations | Migration best practices |
+| Deep Research | Research workflows |
+| Design System | Design system implementation |
+| Django Patterns | Django-specific patterns |
+| Docker Patterns | Container patterns |
+| E2E Testing | End-to-end testing patterns |
+| Eval Harness | Evaluation framework |
+| Exa Search | Search integration |
+| Git Workflow | Git best practices |
+| Go Patterns | Go-specific patterns |
+| Go Testing | Go testing patterns |
+| Java Coding Standards | Java standards |
+| JPA Patterns | JPA/Hibernate patterns |
+| Kotlin Coroutines | Async patterns |
+| Kotlin Patterns | Kotlin best practices |
+| Kotlin Testing | Kotlin testing |
+| Laravel Patterns | PHP Laravel patterns |
+| MCP Server Patterns | MCP server development |
 
 ### Rules (Language-Specific)
 
@@ -203,6 +284,10 @@ cd Super-Orchestrator
 | Go | `rules/golang/golang.md` |
 | Rust | `rules/rust/rust.md` |
 | Java | `rules/java/java.md` |
+| C++ | `rules/cpp/cpp.md` |
+| Swift | `rules/swift/swift.md` |
+| PHP | `rules/php/php.md` |
+| Kotlin | `rules/kotlin/kotlin.md` |
 
 ---
 

@@ -1,90 +1,115 @@
-# /plan — Implementation Planning
-
-**Source:** everything-claude-code  
-**Category:** Planning
-
+---
+description: Restate requirements, assess risks, and create step-by-step implementation plan. WAIT for user CONFIRM before touching any code.
 ---
 
-## Description
+# Plan Command
 
-Create a detailed implementation plan for a feature or task. This command invokes the **planner** agent to break down complex tasks into actionable steps.
+This command invokes the **planner** agent to create a comprehensive implementation plan before writing any code.
 
-## Usage
+## What This Command Does
+
+1. **Restate Requirements** - Clarify what needs to be built
+2. **Identify Risks** - Surface potential issues and blockers
+3. **Create Step Plan** - Break down implementation into phases
+4. **Wait for Confirmation** - MUST receive user approval before proceeding
+
+## When to Use
+
+Use `/plan` when:
+- Starting a new feature
+- Making significant architectural changes
+- Working on complex refactoring
+- Multiple files/components will be affected
+- Requirements are unclear or ambiguous
+
+## How It Works
+
+The planner agent will:
+
+1. **Analyze the request** and restate requirements in clear terms
+2. **Break down into phases** with specific, actionable steps
+3. **Identify dependencies** between components
+4. **Assess risks** and potential blockers
+5. **Estimate complexity** (High/Medium/Low)
+6. **Present the plan** and WAIT for your explicit confirmation
+
+## Example Usage
 
 ```
-/plan <description of what to build>
-```
+User: /plan I need to add real-time notifications when markets resolve
 
-## Examples
+Agent (planner):
+# Implementation Plan: Real-Time Market Resolution Notifications
 
-```
-/plan user authentication system with JWT tokens
+## Requirements Restatement
+- Send notifications to users when markets they're watching resolve
+- Support multiple notification channels (in-app, email, webhook)
+- Ensure notifications are delivered reliably
+- Include market outcome and user's position result
 
-/plan real-time chat feature using WebSockets
+## Implementation Phases
 
-/plan migrate from REST to GraphQL API
-```
+### Phase 1: Database Schema
+- Add notifications table with columns: id, user_id, market_id, type, status, created_at
+- Add user_notification_preferences table for channel preferences
+- Create indexes on user_id and market_id for performance
 
-## What the Planner Does
+### Phase 2: Notification Service
+- Create notification service in lib/notifications.ts
+- Implement notification queue using BullMQ/Redis
+- Add retry logic for failed deliveries
+- Create notification templates
 
-1. **Analyzes Requirements** — Understands what needs to be built
-2. **Identifies Scope** — Determines what's in/out of scope
-3. **Breaks into Phases** — Divides into logical implementation phases
-4. **Identifies Dependencies** — Notes external services, libraries, etc.
-5. **Estimates Complexity** — Assesses difficulty and potential issues
-6. **Documents Risks** — Highlights areas of concern
+### Phase 3: Integration Points
+- Hook into market resolution logic (when status changes to "resolved")
+- Query all users with positions in market
+- Enqueue notifications for each user
 
-## Output Format
-
-The planner produces a structured plan:
-
-```markdown
-# Implementation Plan: <Feature Name>
-
-## Overview
-Brief description of what this feature accomplishes.
-
-## Scope
-### In Scope
-- Item 1
-- Item 2
-
-### Out of Scope
-- Item 1
-- Item 2
-
-## Phases
-
-### Phase 1: Foundation
-**Duration:** ~X hours
-**Tasks:**
-- [ ] Task 1
-- [ ] Task 2
-
-### Phase 2: Core Implementation
-**Duration:** ~X hours
-**Tasks:**
-- [ ] Task 1
-- [ ] Task 2
+### Phase 4: Frontend Components
+- Create NotificationBell component in header
+- Add NotificationList modal
+- Implement real-time updates via Supabase subscriptions
+- Add notification preferences page
 
 ## Dependencies
-- External API: API Name
-- Library: Library Name
-- Team: Team Name
+- Redis (for queue)
+- Email service (SendGrid/Resend)
+- Supabase real-time subscriptions
 
-## Risks & Mitigations
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Risk 1 | High | Mitigation strategy |
+## Risks
+- HIGH: Email deliverability (SPF/DKIM required)
+- MEDIUM: Performance with 1000+ users per market
+- MEDIUM: Notification spam if markets resolve frequently
+- LOW: Real-time subscription overhead
 
-## Testing Strategy
-- Unit tests for X
-- Integration tests for Y
-- E2E tests for Z
+## Estimated Complexity: MEDIUM
+- Backend: 4-6 hours
+- Frontend: 3-4 hours
+- Testing: 2-3 hours
+- Total: 9-13 hours
+
+**WAITING FOR CONFIRMATION**: Proceed with this plan? (yes/no/modify)
 ```
 
-## Related Commands
+## Important Notes
 
-- `/tdd` — Start TDD workflow for implementation
-- `/multi-plan` — Multi-agent task decomposition
-- `/code-review` — Review the plan
+**CRITICAL**: The planner agent will **NOT** write any code until you explicitly confirm the plan with "yes" or "proceed" or similar affirmative response.
+
+If you want changes, respond with:
+- "modify: [your changes]"
+- "different approach: [alternative]"
+- "skip phase 2 and do phase 3 first"
+
+## Integration with Other Commands
+
+After planning:
+- Use `/tdd` to implement with test-driven development
+- Use `/build-fix` if build errors occur
+- Use `/code-review` to review completed implementation
+
+## Related Agents
+
+This command invokes the `planner` agent provided by ECC.
+
+For manual installs, the source file lives at:
+`agents/planner.md`
