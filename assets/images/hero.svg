@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="#0d1117"/>
+  
+  <!-- Background grid -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#21262d" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#grid)"/>
+  
+  <!-- Main title -->
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#58a6ff" text-anchor="middle">SUPER ORCHESTRATOR</text>
+  <text x="400" y="115" font-family="Arial, sans-serif" font-size="18" fill="#8b949e" text-anchor="middle">The Ultimate AI Agent Harness</text>
+  
+  <!-- Stars badge -->
+  <rect x="300" y="140" width="200" height="30" rx="15" fill="#238636" fill-opacity="0.2"/>
+  <text x="400" y="161" font-family="Arial, sans-serif" font-size="14" fill="#3fb950" text-anchor="middle">⭐ 160K+ Stars Combined</text>
+  
+  <!-- Platform icons -->
+  <g transform="translate(150, 220)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#1f6feb" fill-opacity="0.2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="10" fill="#58a6ff" text-anchor="middle">Claude</text>
+    <text x="30" y="47" font-family="Arial, sans-serif" font-size="10" fill="#58a6ff" text-anchor="middle">Code</text>
+  </g>
+  
+  <g transform="translate(230, 220)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#8957e5" fill-opacity="0.2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="10" fill="#a371f7" text-anchor="middle">Open</text>
+    <text x="30" y="47" font-family="Arial, sans-serif" font-size="10" fill="#a371f7" text-anchor="middle">Code</text>
+  </g>
+  
+  <g transform="translate(310, 220)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#f78166" fill-opacity="0.2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="10" fill="#ffa657" text-anchor="middle">Code</text>
+    <text x="30" y="47" font-family="Arial, sans-serif" font-size="10" fill="#ffa657" text-anchor="middle">x</text>
+  </g>
+  
+  <g transform="translate(390, 220)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#3fb950" fill-opacity="0.2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="10" fill="#56d364" text-anchor="middle">Cur</text>
+    <text x="30" y="47" font-family="Arial, sans-serif" font-size="10" fill="#56d364" text-anchor="middle">sor</text>
+  </g>
+  
+  <g transform="translate(470, 220)">
+    <rect x="0" y="0" width="60" height="60" rx="8" fill="#db61a2" fill-opacity="0.2"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="10" fill="#f778ba" text-anchor="middle">Tra</text>
+    <text x="30" y="47" font-family="Arial, sans-serif" font-size="10" fill="#f778ba" text-anchor="middle">e</text>
+  </g>
+  
+  <!-- Arrow -->
+  <text x="550" y="250" font-family="Arial, sans-serif" font-size="24" fill="#8b949e">→</text>
+  
+  <!-- Install button -->
+  <rect x="580" y="225" width="180" height="50" rx="8" fill="#238636"/>
+  <text x="670" y="252" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Install Now</text>
+  <text x="670" y="272" font-family="Arial, sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">curl ... | bash</text>
+  
+  <!-- Features -->
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">
+    <tspan fill="#58a6ff">30+ Agents</tspan> • 
+    <tspan fill="#a371f7">7 Skills</tspan> • 
+    <tspan fill="#ffa657">8 Commands</tspan> • 
+    <tspan fill="#56d364">7 Languages</tspan>
+  </text>
+</svg>

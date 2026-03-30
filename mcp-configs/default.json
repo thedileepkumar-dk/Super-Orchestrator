@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "exa-websearch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-exa"],
+      "env": {}
+    },
+    "context7-docs": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"],
+      "env": {}
+    },
+    "grep-app": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-grep"],
+      "env": {}
+    }
+  }
+}

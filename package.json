@@ -1,0 +1,30 @@
+{
+  "name": "super-orchestrator",
+  "version": "1.0.0",
+  "description": "The ultimate AI agent harness - Consolidating oh-my-opencode, everything-claude-code, and custom agents into one powerful orchestration system",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "install": "node scripts/install.js",
+    "build": "echo 'No build step required'"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "orchestrator",
+    "opencode",
+    "claude-code",
+    "codex",
+    "cursor",
+    "superorchestrator"
+  ],
+  "author": "Super Orchestrator Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superorchestrator/super-orchestrator"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

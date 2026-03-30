@@ -1,0 +1,262 @@
+#!/bin/bash
+
+# Super Orchestrator - Universal Single-Click Installer
+# Works with: OpenCode, Claude Code, Codex, Cursor, Trae
+
+set -e
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+echo ""
+echo -e "${CYAN}╔════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${CYAN}║          SUPER ORCHESTRATOR - UNIVERSAL INSTALLER         ║${NC}"
+echo -e "${CYAN}║    Consolidating 160K+ stars of AI harness power          ║${NC}"
+echo -e "${CYAN}╚════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+
+# Auto-detect platform
+detect_platform() {
+    # Check for Claude Code
+    if [ -d "$HOME/.claude" ]; then
+        echo "claude-code"
+        return
+    fi
+    
+    # Check for OpenCode
+    if [ -d "$HOME/.config/opencode" ]; then
+        echo "opencode"
+        return
+    fi
+    
+    # Check for Codex
+    if [ -d "$HOME/.codex" ]; then
+        echo "codex"
+        return
+    fi
+    
+    # Check for Cursor
+    if [ -d "$HOME/.cursor" ]; then
+        echo "cursor"
+        return
+    fi
+    
+    # Check for Trae
+    if [ -d "$HOME/.trae" ]; then
+        echo "trae"
+        return
+    fi
+    
+    # Default to Claude Code
+    echo "claude-code"
+}
+
+# Get script directory (where the files are)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Detect platform
+PLATFORM=$(detect_platform)
+echo -e "${YELLOW}Detected platform: ${BLUE}$PLATFORM${NC}"
+
+# Determine config directory based on platform
+case $PLATFORM in
+    opencode)
+        CONFIG_DIR="$HOME/.config/opencode"
+        ;;
+    claude-code)
+        CONFIG_DIR="$HOME/.claude"
+        ;;
+    codex)
+        CONFIG_DIR="$HOME/.codex"
+        ;;
+    cursor)
+        CONFIG_DIR="$HOME/.cursor"
+        ;;
+    trae)
+        CONFIG_DIR="$HOME/.trae"
+        ;;
+    *)
+        CONFIG_DIR="$HOME/.super-orchestrator"
+        ;;
+esac
+
+echo -e "${YELLOW}Installing to: ${BLUE}$CONFIG_DIR${NC}"
+echo ""
+
+# Create necessary directories
+mkdir -p "$CONFIG_DIR/agents/discipline"
+mkdir -p "$CONFIG_DIR/agents/specialized"
+mkdir -p "$CONFIG_DIR/agents/language"
+mkdir -p "$CONFIG_DIR/skills"
+mkdir -p "$CONFIG_DIR/commands"
+mkdir -p "$CONFIG_DIR/rules/common"
+
+# Install everything
+echo -e "${GREEN}Installing Super Orchestrator...${NC}"
+
+# Copy discipline agents
+if [ -d "$SCRIPT_DIR/agents/discipline" ]; then
+    for f in "$SCRIPT_DIR/agents/discipline/"*.md; do
+        [ -f "$f" ] && cp -f "$f" "$CONFIG_DIR/agents/discipline/"
+    done
+    echo -e "  ${GREEN}✓${NC} Discipline agents"
+fi
+
+# Copy specialized agents
+if [ -d "$SCRIPT_DIR/agents/specialized" ]; then
+    for f in "$SCRIPT_DIR/agents/specialized/"*.md; do
+        [ -f "$f" ] && cp -f "$f" "$CONFIG_DIR/agents/specialized/"
+    done
+    echo -e "  ${GREEN}✓${NC} Specialized agents"
+fi
+
+# Copy language agents
+if [ -d "$SCRIPT_DIR/agents/language" ]; then
+    for f in "$SCRIPT_DIR/agents/language/"*.md; do
+        [ -f "$f" ] && cp -f "$f" "$CONFIG_DIR/agents/language/"
+    done
+    echo -e "  ${GREEN}✓${NC} Language agents"
+fi
+
+# Copy skills
+if [ -d "$SCRIPT_DIR/skills" ]; then
+    for skill_dir in "$SCRIPT_DIR/skills"/*; do
+        if [ -d "$skill_dir" ]; then
+            skill_name=$(basename "$skill_dir")
+            mkdir -p "$CONFIG_DIR/skills/$skill_name"
+            for f in "$skill_dir"/*.md; do
+                [ -f "$f" ] && cp -f "$f" "$CONFIG_DIR/skills/$skill_name/"
+            done
+        fi
+    done
+    echo -e "  ${GREEN}✓${NC} Skills"
+fi
+
+# Copy commands
+if [ -d "$SCRIPT_DIR/commands" ]; then
+    for f in "$SCRIPT_DIR/commands/"*.md; do
+        [ -f "$f" ] && cp -f "$f" "$CONFIG_DIR/commands/"
+    done
+    echo -e "  ${GREEN}✓${NC} Commands"
+fi
+
+# Copy rules
+if [ -d "$SCRIPT_DIR/rules" ]; then
+    cp -rf "$SCRIPT_DIR/rules/"* "$CONFIG_DIR/rules/" 2>/dev/null || true
+    echo -e "  ${GREEN}✓${NC} Language rules"
+fi
+
+# Create main AGENTS.md
+cat > "$CONFIG_DIR/AGENTS.md" << 'EOFAGENTS'
+# Super Orchestrator - AI Agent Harness
+
+**Version:** 1.0.0 | **Combined Power:** 160K+ stars
+
+---
+
+## Discipline Agents
+
+### Orchestrator (@orchestrator)
+Main orchestrator - plans, delegates, drives tasks to completion.
+
+### Deep Worker (@deep-worker)  
+Autonomous end-to-end execution without hand-holding.
+
+### Strategic Planner (@strategic-planner)
+Interview-mode planning before any code is written.
+
+---
+
+## Specialized Agents
+
+| Command | Purpose |
+|---------|---------|
+| @planner | Implementation planning |
+| @tdd-guide | Test-driven development |
+| @code-reviewer | Code quality review |
+| @security-reviewer | Security audit |
+| @build-error-resolver | Fix build errors |
+| @e2e-runner | End-to-end testing |
+| @refactor-cleaner | Dead code cleanup |
+| @doc-updater | Documentation |
+| @docs-lookup | API research |
+
+---
+
+## Language Agents
+
+| Language | Agent |
+|----------|-------|
+| TypeScript | @typescript-reviewer |
+| Python | @python-reviewer |
+| Go | @go-reviewer |
+| Rust | @rust-reviewer |
+| Java | @java-reviewer |
+| C++ | @cpp-reviewer |
+
+---
+
+## Commands
+
+- `/plan` - Create implementation plan
+- `/tdd` - Test-driven development
+- `/e2e` - E2E testing
+- `/code-review` - Quality review
+- `/build-fix` - Fix build errors
+- `/verify` - Run verification
+
+---
+
+*Installed by Super Orchestrator*
+EOFAGENTS
+echo -e "  ${GREEN}✓${NC} AGENTS.md"
+
+# Create .mcp.json for MCP servers (only if not exists)
+if [ ! -f "$CONFIG_DIR/.mcp.json" ]; then
+    cat > "$CONFIG_DIR/.mcp.json" << 'EOFMCP'
+{
+  "mcpServers": {
+    "exa-websearch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-exa"],
+      "env": {}
+    },
+    "context7-docs": {
+      "command": "npx", 
+      "args": ["-y", "@context7/mcp-server"],
+      "env": {}
+    }
+  }
+}
+EOFMCP
+    echo -e "  ${GREEN}✓${NC} MCP servers config"
+fi
+
+# Success message
+echo ""
+echo -e "${GREEN}╔════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${GREEN}║                    INSTALLATION COMPLETE                  ║${NC}"
+echo -e "${GREEN}╚════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+echo -e "${GREEN}✓${NC} Super Orchestrator installed for ${BLUE}$PLATFORM${NC}"
+echo -e "${GREEN}✓${NC} Config directory: ${YELLOW}$CONFIG_DIR${NC}"
+echo ""
+echo -e "${CYAN}Next steps:${NC}"
+echo "  1. Restart your AI coding harness"
+echo "  2. Try these commands:"
+echo ""
+echo -e "  ${YELLOW}@orchestrator${NC} build a complete login system"
+echo -e "  ${YELLOW}@deep-worker${NC} implement API endpoints"
+echo -e "  ${YELLOW}@planner${NC} design a new feature"
+echo ""
+echo -e "  ${YELLOW}/plan${NC} create implementation plan"
+echo -e "  ${YELLOW}/tdd${NC} start TDD workflow"
+echo -e "  ${YELLOW}/e2e${NC} test critical flows"
+echo ""
+echo -e "${GREEN}For more info: https://github.com/superorchestrator/super-orchestrator${NC}"
+echo ""

@@ -1,0 +1,60 @@
+{
+  "id": "superorchestrator",
+  "name": "Super Orchestrator",
+  "description": "The ultimate AI agent harness - Consolidating oh-my-opencode, everything-claude-code, and custom agents into one powerful orchestration system",
+  "version": "1.0.0",
+  "author": "Super Orchestrator Team",
+  "homepage": "https://github.com/superorchestrator/super-orchestrator",
+  "repository": "https://github.com/superorchestrator/super-orchestrator",
+  "keywords": [
+    "ai",
+    "agent",
+    "orchestrator",
+    "opencode",
+    "claude-code",
+    "superorchestrator"
+  ],
+  "platforms": [
+    "opencode",
+    "claude-code",
+    "codex",
+    "cursor"
+  ],
+  "components": {
+    "agents": [
+      "agents/discipline/*.md",
+      "agents/specialized/*.md",
+      "agents/language/*.md"
+    ],
+    "skills": [
+      "skills/*/SKILL.md"
+    ],
+    "commands": [
+      "commands/*.md"
+    ],
+    "hooks": [
+      "hooks/*/*.sh"
+    ],
+    "rules": [
+      "rules/**/*.md"
+    ],
+    "mcp": [
+      "mcp-configs/*.json"
+    ]
+  },
+  "events": [
+    "SessionStart",
+    "SessionEnd",
+    "PreAgent",
+    "PostAgent",
+    "PreEdit",
+    "PostEdit",
+    "PreBash",
+    "PostBash",
+    "Notification"
+  ],
+  "dependencies": {
+    "oh-my-opencode": ">=3.0.0",
+    "everything-claude-code": ">=1.0.0"
+  }
+}
