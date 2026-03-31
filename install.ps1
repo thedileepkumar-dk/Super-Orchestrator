@@ -134,7 +134,7 @@ if ($Platform -eq "opencode" -and (Test-Path $opencodeAgentsPath)) {
         `"`webfetch`": `"`allow`",
         `"`task`": `"`allow`"
       },
-      `"`prompt`": `"{file:.opencode/agents/orchestrator.md}`"
+        `"`prompt`": `"{file:.opencode/agents/orchestrator.md}`"
     },
     `"`plan`": {
       `"`description`": `"Planner - Super Orchestrator replaces Plan with strategic planning`",
@@ -150,7 +150,9 @@ if ($Platform -eq "opencode" -and (Test-Path $opencodeAgentsPath)) {
   }
 }
 "@
-    Set-Content -Path (Join-Path $env:USERPROFILE "opencode.json") -Value $opencodeJsonContent -Force
+    $configDir = Join-Path $env:USERPROFILE ".config\opencode"
+    if (-not (Test-Path $configDir)) { New-Item -ItemType Directory -Path $configDir -Force | Out-Null }
+    Set-Content -Path (Join-Path $configDir "opencode.json") -Value $opencodeJsonContent -Force
     Write-Host "  ${GREEN}✓${NC} OpenCode opencode.json (Build→Orchestrator, Plan→Planner)"
     
     # Create orchestrator.md (replaces Build)

@@ -156,8 +156,9 @@ if [ "$PLATFORM" = "opencode" ] && [ -d "$HOME/.opencode/agents" ]; then
     # Remove old Build and Plan files to avoid duplicates
     rm -f "$HOME/.opencode/agents/build.md" "$HOME/.opencode/agents/plan.md" 2>/dev/null
     
-    # Create opencode.json to map Build->orchestrator and Plan->planner
-    cat > "$HOME/opencode.json" << 'EOFOC'
+    # Create opencode.json in correct location (~/.config/opencode/)
+    mkdir -p "$HOME/.config/opencode"
+    cat > "$HOME/.config/opencode/opencode.json" << 'EOFOC'
 {
   "$schema": "https://opencode.ai/config.json",
   "agent": {
