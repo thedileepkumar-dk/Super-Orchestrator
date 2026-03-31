@@ -112,6 +112,13 @@ if (Test-Path "$ScriptDir\rules") {
     Write-Host "  ${GREEN}✓${NC} Language rules"
 }
 
+# OpenCode specific: Update local orchestrator AGENTS.md
+$opencodeOrchestratorPath = Join-Path $env:USERPROFILE ".opencode-orchestrator"
+if ($Platform -eq "opencode" -and (Test-Path $opencodeOrchestratorPath)) {
+    Copy-Item -Path "$ScriptDir\AGENTS.md" -Destination (Join-Path $opencodeOrchestratorPath "AGENTS.md") -Force
+    Write-Host "  ${GREEN}✓${NC} OpenCode Orchestrator AGENTS.md"
+}
+
 # Create main AGENTS.md
 $agentsMd = Join-Path $ConfigDir "AGENTS.md"
 $agentsContent = @"

@@ -151,6 +151,12 @@ if [ -d "$SCRIPT_DIR/rules" ]; then
     echo -e "  ${GREEN}✓${NC} Language rules"
 fi
 
+# OpenCode specific: Update local orchestrator AGENTS.md
+if [ "$PLATFORM" = "opencode" ] && [ -d "$HOME/.opencode-orchestrator" ]; then
+    cp -f "$SCRIPT_DIR/AGENTS.md" "$HOME/.opencode-orchestrator/AGENTS.md"
+    echo -e "  ${GREEN}✓${NC} OpenCode Orchestrator AGENTS.md"
+fi
+
 # Create main AGENTS.md
 cat > "$CONFIG_DIR/AGENTS.md" << 'EOFAGENTS'
 # Super Orchestrator - AI Agent Harness
