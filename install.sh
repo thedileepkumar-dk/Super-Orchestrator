@@ -152,9 +152,42 @@ if [ -d "$SCRIPT_DIR/rules" ]; then
 fi
 
 # OpenCode specific: Copy orchestrator and planner to ~/.opencode/agents/
-if [ -d "$HOME/.opencode/agents" ]; then
-    # Remove old Build and Plan to avoid duplicates
+if [ "$PLATFORM" = "opencode" ] && [ -d "$HOME/.opencode/agents" ]; then
+    # Remove old Build and Plan files to avoid duplicates
     rm -f "$HOME/.opencode/agents/build.md" "$HOME/.opencode/agents/plan.md" 2>/dev/null
+    
+    # Create opencode.json to map Build->orchestrator and Plan->planner
+    cat > "$HOME/opencode.json" << 'EOFOC'
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "description": "Orchestrator - Super Orchestrator replaces Build with multi-agent coordination",
+      "mode": "primary",
+      "color": "#00d4ff",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "task": "allow"
+      },
+      "prompt": "{file:.opencode/agents/orchestrator.md}"
+    },
+    "plan": {
+      "description": "Planner - Super Orchestrator replaces Plan with strategic planning",
+      "mode": "primary",
+      "color": "#a855f7",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow",
+        "webfetch": "allow"
+      },
+      "prompt": "{file:.opencode/agents/planner.md}"
+    }
+  }
+}
+EOFOC
+    echo -e "  ${GREEN}✓${NC} OpenCode opencode.json (Build→Orchestrator, Plan→Planner)"
     
     # Create orchestrator.md (replaces Build)
     cat > "$HOME/.opencode/agents/orchestrator.md" << 'EOFORCH'

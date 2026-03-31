@@ -119,6 +119,40 @@ if ($Platform -eq "opencode" -and (Test-Path $opencodeAgentsPath)) {
     Remove-Item -Path (Join-Path $opencodeAgentsPath "build.md") -Force -ErrorAction SilentlyContinue
     Remove-Item -Path (Join-Path $opencodeAgentsPath "plan.md") -Force -ErrorAction SilentlyContinue
     
+    # Create opencode.json to map Build->orchestrator and Plan->planner
+    $opencodeJsonContent = @"
+{
+  `"`$schema`": `"https://opencode.ai/config.json`",
+  `"`agent`": {
+    `"`build`": {
+      `"`description`": `"Orchestrator - Super Orchestrator replaces Build with multi-agent coordination`",
+      `"`mode`": `"`primary`",
+      `"`color`": `"`#00d4ff`",
+      `"`permission`": {
+        `"`edit`": `"`allow`",
+        `"`bash`": `"`allow`",
+        `"`webfetch`": `"`allow`",
+        `"`task`": `"`allow`"
+      },
+      `"`prompt`": `"{file:.opencode/agents/orchestrator.md}`"
+    },
+    `"`plan`": {
+      `"`description`": `"Planner - Super Orchestrator replaces Plan with strategic planning`",
+      `"`mode`": `"`primary`",
+      `"`color`": `"`#a855f7`",
+      `"`permission`": {
+        `"`edit`": `"`deny`",
+        `"`bash`": `"`allow`",
+        `"`webfetch`": `"`allow`"
+      },
+      `"`prompt`": `"{file:.opencode/agents/planner.md}`"
+    }
+  }
+}
+"@
+    Set-Content -Path (Join-Path $env:USERPROFILE "opencode.json") -Value $opencodeJsonContent -Force
+    Write-Host "  ${GREEN}✓${NC} OpenCode opencode.json (Build→Orchestrator, Plan→Planner)"
+    
     # Create orchestrator.md (replaces Build)
     $orchestratorContent = @"
 ---
