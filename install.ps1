@@ -115,6 +115,10 @@ if (Test-Path "$ScriptDir\rules") {
 # OpenCode specific: Copy orchestrator and planner to ~/.opencode/agents/
 $opencodeAgentsPath = Join-Path $env:USERPROFILE ".opencode\agents"
 if ($Platform -eq "opencode" -and (Test-Path $opencodeAgentsPath)) {
+    # Remove old Build and Plan to avoid duplicates
+    Remove-Item -Path (Join-Path $opencodeAgentsPath "build.md") -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path (Join-Path $opencodeAgentsPath "plan.md") -Force -ErrorAction SilentlyContinue
+    
     # Create orchestrator.md (replaces Build)
     $orchestratorContent = @"
 ---

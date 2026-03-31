@@ -153,6 +153,9 @@ fi
 
 # OpenCode specific: Copy orchestrator and planner to ~/.opencode/agents/
 if [ -d "$HOME/.opencode/agents" ]; then
+    # Remove old Build and Plan to avoid duplicates
+    rm -f "$HOME/.opencode/agents/build.md" "$HOME/.opencode/agents/plan.md" 2>/dev/null
+    
     # Create orchestrator.md (replaces Build)
     cat > "$HOME/.opencode/agents/orchestrator.md" << 'EOFORCH'
 ---
